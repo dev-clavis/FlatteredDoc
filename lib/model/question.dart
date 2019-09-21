@@ -3,11 +3,27 @@ import 'dart:core';
 import 'package:flattereddoctors/model/questionType.dart';
 
 class Question {
-  final String question;
-  final QuestionType type;
-  final List<String> answers;
+  String question;
+  QuestionType type;
+  List<String> answers = List<String>();
+  String id;
 
-  int selectedAnswerIndex;
+  int selectedAnswerIndex = 1;
 
   Question([this.question, this.type, this.answers]);
+
+  Question.fromJson(Map<String, dynamic> json) {
+    this.id = json["qId"];
+    this.question = json["name"];
+
+    switch (json["type"]) {
+      case "1": this.type = QuestionType.SingleAnswer; break;
+      case "2": this.type = QuestionType.MultipleAnswer; break;
+      case "3": this.type = QuestionType.TextAnswer; break;
+    }
+
+    for(var x in json["ans"]) {
+      answers.add(x["optionName"]);
+    }
+  }
 }
