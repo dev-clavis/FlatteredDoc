@@ -1,8 +1,10 @@
 import 'package:flattereddoctors/api/FlatteredDoctorsApi.dart';
 import 'package:flattereddoctors/main.dart';
+import 'package:flattereddoctors/model/answer.dart';
 import 'package:flattereddoctors/model/question.dart';
 import 'package:flattereddoctors/model/questionType.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart';
 
 class Survey extends ChangeNotifier {
 
@@ -12,9 +14,7 @@ class Survey extends ChangeNotifier {
   List<Question> questions;
 
   // Client side data
-  int currentQuestionIndex = 0;
   Question currentQuestion;
-  bool isLoading = false;
 
   static Survey testSurvey = Survey(
       title: "Otaku Umfrage",
@@ -22,30 +22,38 @@ class Survey extends ChangeNotifier {
         Question(
             "Welchen Anime findest du müll?",
             QuestionType.SingleAnswer,
-            <String>["Eromanga Sensei", "My sister my writer", "die death note netflix adaption"]),
+            <Answer>[Answer(null, 0, "sorry no stuff")]),
         Question(
             ":ok_hand:",
             QuestionType.SingleAnswer,
-            <String>["haha funny :joy:", "not funny didn't laugh"]),
+            <Answer>[Answer(null, 0, "sorry no stuff")]),
       ]
   );
 
-  void onAnswer(Question question, int index) {
-    question.selectedAnswerIndex = index;
+  void onAnswer(Answer answer, int answerId) {
+    assert(answer.id == answerId);
+    answer.question.selectedAnswerId = answer.id;
     notifyListeners();
   }
 
-  void onQuestion(Question question) async {
-    currentQuestion = questions[currentQuestionIndex];
-    isLoading = true;
-    notifyListeners();
-//survey.isLoading ? getLoadingWidget() :
-    currentQuestionIndex = questions.indexOf(question);
-    var response = await FlatteredDoctorsApi.postAnswerSelection(deviceId, int.parse(id), int.parse(currentQuestion.id), currentQuestion.selectedAnswerIndex + 1);
-    var body = response.body;
+  Future<Response> onQuestion(Question question, int selectedId, bool end) async {
+    currentQuestion = question;
 
-    isLoading = false;
+    print("question id: ${currentQuestion.id}, device ID: $deviceId, selectedId: $selectedId, survey id: $id");
+
+    var response = await FlatteredDoctorsApi.postAnswerSelection(
+        deviceId,
+        int.parse(id),
+        int.parse(currentQuestion.id),
+        selectedId);
+
+
+
+    print("Antwort als wir die antwort bekommen: ${response.body}");
+
     notifyListeners();
+
+    return response;
   }
 
   void copyFrom(Survey survey) {

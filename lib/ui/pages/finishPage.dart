@@ -19,28 +19,12 @@ class FinishPage extends StatelessWidget {
           padding: EdgeInsets.all(25),
             child: Column(
               children: <Widget>[
+                Padding(padding: EdgeInsets.all(16), child: Icon(Icons.check_circle)),
                 Padding(child: Text("Vielen Dank", style: Theme.of(context).textTheme.display1), padding: EdgeInsets.only(bottom: 8)),
-                Text("Du kannst diesen Fragenbogen mit deinen teilen!"),
+                Text("Du kannst diesen Fragenbogen mit deinen Freunden teilen!"),
                 Row(
                   children: <Widget>[
-                    Expanded(
-                      child: Padding(
-                        child: RaisedButton.icon(
-                          icon: Icon(Icons.share),
-                          label: Text("Teilen")
-                        ),
-                        padding: EdgeInsets.all(5)
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        child: RaisedButton.icon(
-                            icon: Icon(Icons.camera_alt),
-                            label: Text("QR-Code")
-                        ),
-                          padding: EdgeInsets.all(5)
-                      ),
-                    )
+
                   ],
                 )
               ],

@@ -1,3 +1,4 @@
+import 'package:flattereddoctors/model/answer.dart';
 import 'package:flattereddoctors/model/question.dart';
 import 'package:flattereddoctors/ui/widgets/optionWidget.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +27,9 @@ class QuestionWidget extends StatelessWidget {
   List<Widget> getOptionWidgets(Question question) {
     var widgets = new List<Widget>();
 
-    for (var i=0; i<question.answers.length;i++) {
-      widgets.add(OptionWidget(i, question));
-    }
+    for (Answer answer in question.answers)
+      widgets.add(OptionWidget(answer));
 
     return widgets;
   }
-
 }

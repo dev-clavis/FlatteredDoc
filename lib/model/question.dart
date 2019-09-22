@@ -1,14 +1,15 @@
 import 'dart:core';
 
+import 'package:flattereddoctors/model/answer.dart';
 import 'package:flattereddoctors/model/questionType.dart';
 
 class Question {
   String question;
   QuestionType type;
-  List<String> answers = List<String>();
+  List<Answer> answers = List<Answer>();
   String id;
 
-  int selectedAnswerIndex = 1;
+  int selectedAnswerId = 0;
 
   Question([this.question, this.type, this.answers]);
 
@@ -23,7 +24,7 @@ class Question {
     }
 
     for(var x in json["ans"]) {
-      answers.add(x["optionName"]);
+      answers.add(Answer.fromJson(this, x));
     }
   }
 }
