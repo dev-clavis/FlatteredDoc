@@ -15,6 +15,3 @@ doc/api/
 # Dateien von IDEs und tools
 android/.gradle/
 .idea/
-.idea/libraries/Dart_Packages.xml
-.idea/libraries/Flutter_Plugins.xml
-.idea/workspace.xml
