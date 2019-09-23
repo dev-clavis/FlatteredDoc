@@ -14,4 +14,4 @@ doc/api/
 
 # Dateien von IDEs und tools
 android/.gradle/
-.idea
+.idea/
