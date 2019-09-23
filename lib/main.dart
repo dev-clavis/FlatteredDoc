@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => MyHomePage(),
+        '/': (context) => HomePage(),
         '/surveyInfo': (context) => SurveyInfoPage(),
         '/survey': (context) => SurveyPage(),
         '/inputId': (context) => IdInputPage(),

@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_utils/qr_utils.dart';
 
-class MyHomePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  _MyHomePageState createState() => _MyHomePageState(_scaffoldKey);
+  _HomePageState createState() => _HomePageState(_scaffoldKey);
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey;
 
-  _MyHomePageState([this._scaffoldKey]);
+  _HomePageState([this._scaffoldKey]);
 
   @override
   Widget build(BuildContext context) {
