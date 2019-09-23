@@ -7,14 +7,14 @@ class Question {
   String question;
   QuestionType type;
   List<Answer> answers = List<Answer>();
-  String id;
+  int id;
 
   int selectedAnswerId = 0;
 
   Question([this.question, this.type, this.answers]);
 
   Question.fromJson(Map<String, dynamic> json) {
-    this.id = json["qId"];
+    this.id = int.parse(json["qId"]);
     this.question = json["name"];
 
     switch (json["type"]) {

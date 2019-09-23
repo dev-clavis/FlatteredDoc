@@ -10,7 +10,7 @@ class Survey extends ChangeNotifier {
 
   String title;
   String author;
-  String id;
+  int id;
   List<Question> questions;
 
   // Client side data
@@ -43,8 +43,8 @@ class Survey extends ChangeNotifier {
 
     var response = await FlatteredDoctorsApi.postAnswerSelection(
         deviceId,
-        int.parse(id),
-        int.parse(currentQuestion.id),
+        id,
+        currentQuestion.id,
         selectedId);
 
 
@@ -69,7 +69,7 @@ class Survey extends ChangeNotifier {
   Survey.fromJson(Map<String, dynamic> json) {
     this.title = json["name"];
     this.author = json["author"];
-    this.id = json["id"];
+    this.id = int.parse(json["id"]);
 
     var questions = List<Question>();
 
