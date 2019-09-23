@@ -18,16 +18,7 @@ class Survey extends ChangeNotifier {
 
   static Survey testSurvey = Survey(
       title: "Otaku Umfrage",
-      questions: <Question>[
-        Question(
-            "Welchen Anime findest du müll?",
-            QuestionType.SingleAnswer,
-            <Answer>[Answer(null, 0, "sorry no stuff")]),
-        Question(
-            ":ok_hand:",
-            QuestionType.SingleAnswer,
-            <Answer>[Answer(null, 0, "sorry no stuff")]),
-      ]
+      questions: <Question>[]
   );
 
   void onAnswer(Answer answer, int answerId) {
@@ -74,7 +65,7 @@ class Survey extends ChangeNotifier {
     var questions = List<Question>();
 
     json["0"].forEach((k,v) {
-      questions.add(Question.fromJson(v));
+      questions.add(Question.fromJson(this, v));
     });
 
     this.questions = questions;

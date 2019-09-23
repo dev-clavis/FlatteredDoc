@@ -2,18 +2,20 @@ import 'dart:core';
 
 import 'package:flattereddoctors/model/answer.dart';
 import 'package:flattereddoctors/model/questionType.dart';
+import 'package:flattereddoctors/model/survey.dart';
 
 class Question {
   String question;
   QuestionType type;
   List<Answer> answers = List<Answer>();
   int id;
+  Survey survey;
 
   int selectedAnswerId = 0;
 
-  Question([this.question, this.type, this.answers]);
+  Question([this.survey, this.question, this.type, this.answers]);
 
-  Question.fromJson(Map<String, dynamic> json) {
+  Question.fromJson(this.survey, Map<String, dynamic> json) {
     this.id = int.parse(json["qId"]);
     this.question = json["name"];
 
