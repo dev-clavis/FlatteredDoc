@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flattereddoctors/model/survey.dart';
 import 'package:http/http.dart' as http;
@@ -10,8 +9,6 @@ class FlatteredDoctorsApi {
   static String _server = "http://172.16.0.1:8001";
 
   static Future<Survey> getSurvey (int id) async {
-    //await http.post("$_server/")
-
     var response = await http.get("$_server/req.php?id=$id");
 
     assert(response.statusCode != 500);
@@ -42,8 +39,6 @@ class FlatteredDoctorsApi {
   }
 
   static Future<int> wasAnsweredBefore(String userId, int surveyId) async {
-    return 0;
-
     var data = {
       "uId": userId,
       "umId": surveyId

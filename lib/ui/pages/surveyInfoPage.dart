@@ -1,5 +1,4 @@
 import 'package:flattereddoctors/model/survey.dart';
-import 'package:flattereddoctors/ui/pages/surveyPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
