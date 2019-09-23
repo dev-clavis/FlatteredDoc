@@ -1,5 +1,4 @@
 import 'package:flattereddoctors/model/answer.dart';
-import 'package:flattereddoctors/model/question.dart';
 import 'package:flattereddoctors/model/survey.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

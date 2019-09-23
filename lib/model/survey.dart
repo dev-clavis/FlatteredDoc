@@ -2,7 +2,6 @@ import 'package:flattereddoctors/api/FlatteredDoctorsApi.dart';
 import 'package:flattereddoctors/main.dart';
 import 'package:flattereddoctors/model/answer.dart';
 import 'package:flattereddoctors/model/question.dart';
-import 'package:flattereddoctors/model/questionType.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 

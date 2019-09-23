@@ -1,13 +1,11 @@
 import 'package:flattereddoctors/model/question.dart';
-import 'package:flattereddoctors/model/questionType.dart';
 import 'package:flattereddoctors/model/survey.dart';
-import 'package:flattereddoctors/ui/widgets/optionWidget.dart';
 import 'package:flattereddoctors/ui/widgets/questionWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SurveyPage extends StatelessWidget {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -62,7 +60,8 @@ class SurveyPage extends StatelessWidget {
                                     )
                                   ],
                                 ),
-                                message: "Vorschritt des Fragebogens")),
+                                message: "Vorschritt des Fragebogens")
+                        ),
                               RaisedButton.icon(
                                   label: Text(lastQuestion ? "Abschließen" : "Weiter"),
                                   icon: Icon(lastQuestion ? Icons.check : Icons.arrow_forward),
@@ -74,7 +73,7 @@ class SurveyPage extends StatelessWidget {
                                         print("HILFE:" + ex.toString());
                                         //Navigator.pushNamedAndRemoveUntil(context, '/', (r) => false);
                                       } finally {
-                                        Navigator.pushNamed(context, "/finish");
+                                        Navigator.pushNamed(context, "/survey/finish");
 
                                       }
                                     } else {

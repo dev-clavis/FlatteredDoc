@@ -1,4 +1,6 @@
 import 'package:flattereddoctors/model/survey.dart';
+import 'package:flattereddoctors/ui/pages/aboutPage.dart';
+import 'package:flattereddoctors/ui/pages/debugPage.dart';
 import 'package:flattereddoctors/ui/pages/finishPage.dart';
 import 'package:flattereddoctors/ui/pages/homePage.dart';
 import 'package:flattereddoctors/ui/pages/idInputPage.dart';
@@ -27,18 +29,22 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.purpleAccent,
         brightness: Brightness.dark,
         inputDecorationTheme: InputDecorationTheme(
-          fillColor: Colors.white,
-          hoverColor: Colors.white,
-          focusColor: Colors.white
+          errorStyle: new TextStyle(color: Colors.red.shade50)
+        ),
+        appBarTheme: AppBarTheme(
+          color: Colors.purple,
+          brightness: Brightness.dark
         )
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
-        '/surveyInfo': (context) => SurveyInfoPage(),
-        '/survey': (context) => SurveyPage(),
         '/inputId': (context) => IdInputPage(),
-        '/finish': (context) => FinishPage()
+        '/debug': (context) => DebugPage(),
+        '/about': (context) => AboutPage(),
+        '/survey/info': (context) => SurveyInfoPage(),
+        '/survey': (context) => SurveyPage(),
+        '/survey/finish': (context) => FinishPage(),
       },
     );
   }
