@@ -1,16 +1,10 @@
-# flattereddoctors
+# Flattered Doctors (im PIT-Hackathon Vorstellungs state)
+Diese Branch beinhaltet den Code wie er vorgestellt wurde (mit Fehlern).
 
-A new Flutter application.
+## Probleme des Codes
+- Schreibfehler in FinishPage (lib/ui/pages/finishPage.dart: Line 23)
+- Tut so als würde es funktionieren auch wenn der Client/Server die letzte Antwort nicht angenommen hat.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Entfernte Features
+- Sharing am Ende der Umfrage
+- Check ob die Umfrage schon beantwortet wurde damit später der User nicht in der Umfrage stecken bleibt.
