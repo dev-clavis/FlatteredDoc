@@ -65,60 +65,60 @@ class _HomePageState extends State<HomePage> {
             child: Center(
                 child: isLoading ?
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                          strokeWidth: 4
-                      ),
-                    ),
-                    Text("Warte auf Server...", style: TextStyle(fontStyle: FontStyle.italic))
-                  ],
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                        Padding(
+                            padding: const EdgeInsets.all(24.0),
+                            child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                strokeWidth: 4
+                            ),
+                        ),
+                        Text("Warte auf Server...")
+                    ],
                 ) :
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                        "Willkommen",
-                        style: Theme.of(context).textTheme.display1
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(top:8),
-                        child: Text("wie möchtest Du eine Umfrage finden?", style: Theme.of(context).textTheme.body1)
-                    ),
-                    Divider(height: 60),
-                    RaisedButton.icon(
-                        color: Colors.white,
-                        textColor: Colors.purple,
-                        icon: Icon(Mdi.qrcode),
-                        label: Text("QR-Code scannen"),
-                        onPressed: () => QrUtils.scanQR.then((s) {
-                          var id = int.tryParse(s);
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                          "Willkommen",
+                          style: Theme.of(context).textTheme.display1
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(top:8),
+                          child: Text("wie möchtest Du eine Umfrage finden?", style: Theme.of(context).textTheme.body1)
+                      ),
+                      Divider(height: 60),
+                      RaisedButton.icon(
+                          color: Colors.white,
+                          textColor: Colors.purple,
+                          icon: Icon(Mdi.qrcode),
+                          label: Text("QR-Code scannen"),
+                          onPressed: () => QrUtils.scanQR.then((s) {
+                            var id = int.tryParse(s);
 
-                          if (id == null)
-                            _scaffoldKey.currentState.showSnackBar(getErrorSnackBar('Ungültiger QR-Code'));
-                          else
+                            if (id == null)
+                              _scaffoldKey.currentState.showSnackBar(getErrorSnackBar('Ungültiger QR-Code'));
+                            else
+                              tryToEnterSurvey(context, id, _scaffoldKey);
+                          })
+                      ),
+                      RaisedButton.icon(
+                          color: Colors.white,
+                          textColor: Colors.purple,
+                          icon: Icon(Mdi.formatTextVariant),
+                          label: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 9),
+                              child: Text("Code eingeben")
+                          ),
+                          onPressed: () => Navigator.pushNamed(context, "/inputId").then((id) {
+                            if (id == null)
+                              return;
+
                             tryToEnterSurvey(context, id, _scaffoldKey);
-                        })
-                    ),
-                    RaisedButton.icon(
-                        color: Colors.white,
-                        textColor: Colors.purple,
-                        icon: Icon(Mdi.formatTextVariant),
-                        label: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 9),
-                            child: Text("Code eingeben")
-                        ),
-                        onPressed: () => Navigator.pushNamed(context, "/inputId").then((id) {
-                          if (id == null)
-                            return;
-
-                          tryToEnterSurvey(context, id, _scaffoldKey);
-                        })
-                    )
-                  ],
+                          })
+                      )
+                    ],
                 ),
             )
         ),

@@ -34,7 +34,11 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           color: Colors.purple,
           brightness: Brightness.dark
-        )
+        ),
+        snackBarTheme: SnackBarThemeData(
+          backgroundColor: Colors.purple,
+          contentTextStyle: TextStyle(color: Colors.white)
+        ),
       ),
       initialRoute: '/',
       routes: {

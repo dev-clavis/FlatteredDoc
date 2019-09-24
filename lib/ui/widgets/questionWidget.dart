@@ -12,12 +12,15 @@ class QuestionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.only(left:15, right:15, top:30, bottom:0),
         child: Column(
           children: <Widget>[
            Text(question.name, style: Theme.of(context).textTheme.display2),
            Divider(height: 40),
-           Column(children: getOptionWidgets(question))
+           ListView(
+               shrinkWrap: true,
+               children: getOptionWidgets(question)
+           )
           ]
         )
     );
