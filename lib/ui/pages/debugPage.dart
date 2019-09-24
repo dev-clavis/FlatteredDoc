@@ -1,5 +1,7 @@
+import 'package:flattereddoctors/model/survey.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
+import 'package:provider/provider.dart';
 
 import '../../main.dart';
 
@@ -40,6 +42,14 @@ class _DebugPageState extends State<DebugPage> {
             leading: Icon(Mdi.function),
             title: Text("Finish Page öffnen"),
             onTap: () => Navigator.pushNamed(context, '/survey/finish')
+          ),
+          ListTile(
+              leading: Icon(Mdi.function),
+              title: Text("Lokale Debug Umfrage starten"),
+              onTap: () {
+                Provider.of<Survey>(context).copyFrom(Survey.testSurvey);
+                Navigator.pushNamed(context, '/survey/info');
+              }
           )
         ],
       )

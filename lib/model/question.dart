@@ -14,7 +14,11 @@ class Question {
 
   int selectedAnswerId = 0;
 
-  Question([this.survey, this.name, this.type, this.answers]);
+  Question([this.survey, this.name, this.type, this.answers]) {
+    for (Answer answer in this.answers) {
+      answer.question = this;
+    }
+  }
 
   Question.fromJson(this.survey, Map<String, dynamic> json) {
     this.id = int.parse(json["qId"]);

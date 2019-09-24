@@ -32,7 +32,12 @@ class SurveyPage extends StatelessWidget {
                   )
                 ),
                 Padding(
-                    padding: EdgeInsets.only(left: 5, right: 10, top: 5, bottom: 5),
+                    padding: EdgeInsets.only(
+                        left: 15,
+                        right: 15,
+                        top: 5,
+                        bottom: 10
+                    ),
                     child: Row(
                       children: <Widget>[
                         Expanded(
@@ -67,14 +72,14 @@ class SurveyPage extends StatelessWidget {
                                   icon: Icon(lastQuestion ? Icons.check : Icons.arrow_forward),
                                   onPressed: !answerSelected(survey) ? null : () async {
                                     if(lastQuestion) {
+
+                                      bool failed = false;
                                       try {
                                         survey.onQuestion(question, question.selectedAnswerId, true);
                                       } catch (ex) {
-                                        print("HILFE:" + ex.toString());
-                                        //Navigator.pushNamedAndRemoveUntil(context, '/', (r) => false);
+                                        failed = true;
                                       } finally {
-                                        Navigator.pushNamed(context, "/survey/finish");
-
+                                        Navigator.pushNamed(context, "/survey/finish", arguments: [failed]);
                                       }
                                     } else {
                                       try {
